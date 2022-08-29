@@ -19,9 +19,9 @@ library("lubridate")
 
 ```{r}
 Collectible_agg <- data.frame(read_csv("./Data/Collectibles/220711_collectibles.csv"))
-BAYC <- data.frame(read_csv("C:/Users/dominik/OneDrive/Uni/Masterthesis/Data/Inputs/Bubble_Tests/Collectibles/220711_bayc.csv"))
-CP <- data.frame(read_csv("C:/Users/dominik/OneDrive/Uni/Masterthesis/Data/Inputs/Bubble_Tests/Collectibles/220711_cryptopunks.csv"))
-MB <- data.frame(read_csv("C:/Users/dominik/OneDrive/Uni/Masterthesis/Data/Inputs/Bubble_Tests/Collectibles/220711_meebits.csv"))
+BAYC <- data.frame(read_csv("./Data/Collectibles/220711_bayc.csv"))
+CP <- data.frame(read_csv("./Data/Collectibles/220711_cryptopunks.csv"))
+MB <- data.frame(read_csv("./Data/Collectibles/220711_meebits.csv"))
 ```
 
 ```{r}
