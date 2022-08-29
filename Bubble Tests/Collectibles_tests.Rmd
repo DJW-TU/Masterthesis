@@ -54,7 +54,6 @@ date_list <- lapply(data,get_last_zero)
 ```
 
 
-
 ```{r}
 #subset Data to have non null values in dataset
 i <- 1
@@ -72,9 +71,6 @@ for (x in data){
 }
 ```
 
-```{r}
-plot(data_sub[[3]]$DateTime, data_sub[[3]]$avg_usd,type = 'l')
-```
 
 ```{r}
 #subset data to only carry date and avg_usd column
@@ -113,6 +109,7 @@ test_datestamps <- lapply(test_results,datestamp,sig_lvl = significance_lvl, lag
 ```{r}
 lapply(test_results,autoplot,sig_lvl = significance_lvl, option = "gsadf", nonrejected = TRUE)
 ```
+
 ```{r}
 # get number of rows of dataframes to extract critical values from exuber package
 n_rows <- lapply(data_sub,nrow)
@@ -245,7 +242,7 @@ for (x in 1:length(plot_list)){
             geom_rect(data = recession, aes(xmin = date_start, xmax = date_end, ymin = -Inf, ymax = Inf),
                     fill = "#6b1713", alpha= 0.3,show.legend = FALSE)
     print(plt)
-    ggsave(plt, file=paste0("bsadf_", names[x],".png"), width = 14, height = 10, units = "cm")}
+    #ggsave(plt, file=paste0("bsadf_", names[x],".png"), width = 14, height = 10, units = "cm")}
   else{
   plt <- ggplot()+ 
             geom_line(data = plot_list[[x]], aes(x = date, y = value, color = variable, linetype = variable), size = line_width) +
@@ -268,7 +265,7 @@ for (x in 1:length(plot_list)){
               legend.title = element_blank()
               )
     print(plt)
-    ggsave(plt, file=paste0("bsadf_", names[x],".png"), width = 14, height = 10, units = "cm")}
+    #ggsave(plt, file=paste0("bsadf_", names[x],".png"), width = 14, height = 10, units = "cm")}
   }
 ```
 
@@ -281,6 +278,7 @@ for (x in 1:length(test_datestamps)){
   print(data.frame(test_datestamps[[x]]))
 }
 ```
+
 ```{r}
 #function to create table
 rslt <- function(list,tf,nombres) {
