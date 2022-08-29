@@ -159,12 +159,6 @@ for (x in data){
 ```
 
 ``` r
-plot(data_sub[[3]]$DateTime, data_sub[[3]]$avg_usd,type = 'l')
-```
-
-![](Collectibles_tests_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
-
-``` r
 #subset data to only carry date and avg_usd column
 i <- 1
 for (x in data_sub){
@@ -232,22 +226,22 @@ lapply(test_results,autoplot,sig_lvl = significance_lvl, option = "gsadf", nonre
 
     ## [[1]]
 
-![](Collectibles_tests_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
+![](Collectibles_tests_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
 
     ## 
     ## [[2]]
 
-![](Collectibles_tests_files/figure-gfm/unnamed-chunk-11-2.png)<!-- -->
+![](Collectibles_tests_files/figure-gfm/unnamed-chunk-10-2.png)<!-- -->
 
     ## 
     ## [[3]]
 
-![](Collectibles_tests_files/figure-gfm/unnamed-chunk-11-3.png)<!-- -->
+![](Collectibles_tests_files/figure-gfm/unnamed-chunk-10-3.png)<!-- -->
 
     ## 
     ## [[4]]
 
-![](Collectibles_tests_files/figure-gfm/unnamed-chunk-11-4.png)<!-- -->
+![](Collectibles_tests_files/figure-gfm/unnamed-chunk-10-4.png)<!-- -->
 
 ``` r
 # get number of rows of dataframes to extract critical values from exuber package
@@ -386,7 +380,8 @@ for (x in 1:length(plot_list)){
             geom_rect(data = recession, aes(xmin = date_start, xmax = date_end, ymin = -Inf, ymax = Inf),
                     fill = "#6b1713", alpha= 0.3,show.legend = FALSE)
     print(plt)
-    ggsave(plt, file=paste0("bsadf_", names[x],".png"), width = 14, height = 10, units = "cm")}
+    #ggsave(plt, file=paste0("bsadf_", names[x],".png"), width = 14, height = 10, units = "cm")
+    }
   else{
   plt <- ggplot()+ 
             geom_line(data = plot_list[[x]], aes(x = date, y = value, color = variable, linetype = variable), size = line_width) +
@@ -409,11 +404,12 @@ for (x in 1:length(plot_list)){
               legend.title = element_blank()
               )
     print(plt)
-    ggsave(plt, file=paste0("bsadf_", names[x],".png"), width = 14, height = 10, units = "cm")}
+    #ggsave(plt, file=paste0("bsadf_", names[x],".png"), width = 14, height = 10, units = "cm")
+    }
   }
 ```
 
-![](Collectibles_tests_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->![](Collectibles_tests_files/figure-gfm/unnamed-chunk-19-2.png)<!-- -->![](Collectibles_tests_files/figure-gfm/unnamed-chunk-19-3.png)<!-- -->![](Collectibles_tests_files/figure-gfm/unnamed-chunk-19-4.png)<!-- -->
+![](Collectibles_tests_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->![](Collectibles_tests_files/figure-gfm/unnamed-chunk-18-2.png)<!-- -->![](Collectibles_tests_files/figure-gfm/unnamed-chunk-18-3.png)<!-- -->![](Collectibles_tests_files/figure-gfm/unnamed-chunk-18-4.png)<!-- -->
 
 ``` r
 print(test_summary)
