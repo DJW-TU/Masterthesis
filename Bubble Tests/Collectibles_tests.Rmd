@@ -1,6 +1,6 @@
 ---
 title: "R Notebook"
-output: html_notebook
+output: rmarkdown::github_document
 ---
 
 ```{r}
@@ -63,7 +63,7 @@ data_sub <- list()
 for (x in data){
   
   if(!is.null(date_list[[i]])){
-    x <- subset(x, DateTime >= date_list[[i]])
+    x <- subset(x, DateTime > date_list[[i]])
     data_sub[[i]] <- x
     } else{
     data_sub[[i]] <- x
