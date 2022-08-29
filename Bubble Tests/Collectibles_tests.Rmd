@@ -246,7 +246,8 @@ for (x in 1:length(plot_list)){
             geom_rect(data = recession, aes(xmin = date_start, xmax = date_end, ymin = -Inf, ymax = Inf),
                     fill = "#6b1713", alpha= 0.3,show.legend = FALSE)
     print(plt)
-    ggsave(plt, file=paste0("bsadf_", names[x],".png"), width = 14, height = 10, units = "cm")}
+    #ggsave(plt, file=paste0("bsadf_", names[x],".png"), width = 14, height = 10, units = "cm")
+    }
   else{
   plt <- ggplot()+ 
             geom_line(data = plot_list[[x]], aes(x = date, y = value, color = variable, linetype = variable), size = line_width) +
@@ -269,7 +270,8 @@ for (x in 1:length(plot_list)){
               legend.title = element_blank()
               )
     print(plt)
-    ggsave(plt, file=paste0("bsadf_", names[x],".png"), width = 14, height = 10, units = "cm")}
+    #ggsave(plt, file=paste0("bsadf_", names[x],".png"), width = 14, height = 10, units = "cm")
+    }
   }
 ```
 
