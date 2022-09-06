@@ -1,6 +1,8 @@
 ---
 title: "R Notebook"
-output: html_notebook
+author: "Dominik Wulf"
+date: "`r format(Sys.time(),'%d %B, %Y')`"
+output: rmarkdown::github_document
 ---
 
 ```{r}
@@ -17,22 +19,23 @@ library("lubridate")
 
 
 ```{r}
-Art_data <- data.frame(read_csv("C:/Users/dominik/Desktop/Uni/Masterthesis/Data/Inputs/Bubble_Tests/Art/220711_art.csv"))
+Art_data <- data.frame(read_csv("..Data/Art/220711_art.csv"))
 
 #Collectibles
-Collectibles_data <- data.frame(read_csv("C:/Users/dominik/Desktop/Uni/Masterthesis/Data/Inputs/Bubble_Tests/Collectibles/220711_collectibles.csv")) 
+Collectibles_data <- data.frame(read_csv("..Data/Collectibles/220711_collectibles.csv")) 
 
 #Game
-Gaming_data <- data.frame(read_csv("C:/Users/dominik/Desktop/Uni/Masterthesis/Data/Inputs/Bubble_Tests/Gaming/220711_game.csv"))
+Gaming_data <- data.frame(read_csv("..Data/Gaming/220711_game.csv"))
 
 #Metaverse
-Metaverse_data <- data.frame(read_csv("C:/Users/dominik/Desktop/Uni/Masterthesis/Data/Inputs/Bubble_Tests/Metaverse/220711_Metaverse.csv"))
+Metaverse_data <- data.frame(read_csv("..Data/Metaverse/220711_Metaverse.csv"))
 
 #Utility
-Utility_data <- data.frame(read_csv("C:/Users/dominik/Desktop/Uni/Masterthesis/Data/Inputs/Bubble_Tests/Utility/220711_utility.csv"))
+Utility_data <- data.frame(read_csv("..Data/Utility/220711_utility.csv"))
 ```
+
 ```{r}
-#convert data --> avg.USD
+#calculate data --> avg.USD
 get_avg_usd <- function(df) {
   df$avg_usd <- ifelse(df[,2]==0, 0, round(df[,3]/df[,2],2))
   return(df)
@@ -67,8 +70,6 @@ print(paste(names[x],sum(data[[x]]$Number.of.sales)))
 data <- lapply(data,get_avg_usd)
 date_list <- lapply(data,get_last_zero)
 ```
-
-
 
 ```{r}
 #subset Data to have non null values in dataset
@@ -122,6 +123,7 @@ test_datestamps <- lapply(test_results,datestamp,sig_lvl = significance_lvl, lag
 ```
 
 ```{r}
+#apply BSADF test on time series
 lapply(test_results,autoplot,sig_lvl = significance_lvl, option = "gsadf", nonrejected = TRUE)
 ```
 ```{r}
@@ -236,7 +238,7 @@ for (x in 1:length(plot_list)){
   plt <- ggplot()+ 
             geom_line(data = plot_list[[x]], aes(x = date, y = value, color = variable, linetype = variable), size = line_width) +
             ylim(min(plot_list[[x]]$value)-1,max(plot_list[[x]]$value)+1)+
-            #labs(title=names[x]) +  # title and caption
+            labs(title=names[x]) +  # title and caption
             scale_colour_manual(label=c('cv','ts'),
                              values = c("#6b2d13", "#135c6b")) +
             scale_linetype_manual(values = c("dotdash","solid")) + 
@@ -256,7 +258,7 @@ for (x in 1:length(plot_list)){
             geom_rect(data = recession, aes(xmin = date_start, xmax = date_end, ymin = -Inf, ymax = Inf),
                     fill = "#6b1713", alpha= 0.3,show.legend = FALSE)
     print(plt)
-    ggsave(plt, file=paste0("bsadf_", names[x],".png"), width = 14, height = 10, units = "cm")}
+    ggsave(plt, path = "../Figs", file=paste0("bsadf_", names[x],".png"), width = 14, height = 10, units = "cm")}
   else{
   plt <- ggplot()+ 
             geom_line(data = plot_list[[x]], aes(x = date, y = value, color = variable, linetype = variable), size = line_width) +
@@ -279,12 +281,39 @@ for (x in 1:length(plot_list)){
               legend.title = element_blank()
               )
     print(plt)
-    ggsave(plt, file=paste0("bsadf_", names[x],".png"), width = 14, height = 10, units = "cm")}
+    ggsave(plt, path = "../Figs", file=paste0("bsadf_", names[x],".png"), width = 14, height = 10, units = "cm")}
   }
 ```
 
 ```{r}
 print(test_summary)
+```
+```{r}
+for (x in 1:length(test_datestamps)){
+  print(names[x])
+  print(data.frame(test_datestamps[[x]]))
+}
+```
+
+```{r}
+#function to create result table
+rslt <- function(list,tf,nombres) {
+  
+  len_df <- length(list)
+  df_return <- list[[1]]$avg_usd[3,]
+
+  for (x in 2:len_df){
+    v1 <- list[[x]]$avg_usd[3,]
+    df_return <- rbind(df_return,v1)
+  }
+  df_return <- cbind(unlist(nombres),tf,df_return)
+  return(df_return)
+}
+```
+
+```{r}
+result_table <- rslt(test_summary,time_frames,names) 
+print(result_table)
 ```
 ```{r}
 for (x in 1:length(test_datestamps)){

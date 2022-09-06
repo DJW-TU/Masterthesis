@@ -1,5 +1,7 @@
 R Notebook
 ================
+Dominik Wulf
+06 September, 2022
 
 ``` r
 #load packages
