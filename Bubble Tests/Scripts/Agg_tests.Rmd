@@ -19,19 +19,19 @@ library("lubridate")
 
 
 ```{r}
-Art_data <- data.frame(read_csv("..Data/Art/220711_art.csv"))
+Art_data <- data.frame(read_csv("../Data/Art/220711_art.csv"))
 
 #Collectibles
-Collectibles_data <- data.frame(read_csv("..Data/Collectibles/220711_collectibles.csv")) 
+Collectibles_data <- data.frame(read_csv("../Data/Collectibles/220711_collectibles.csv")) 
 
 #Game
-Gaming_data <- data.frame(read_csv("..Data/Gaming/220711_game.csv"))
+Gaming_data <- data.frame(read_csv("../Data/Gaming/220711_game.csv"))
 
 #Metaverse
-Metaverse_data <- data.frame(read_csv("..Data/Metaverse/220711_Metaverse.csv"))
+Metaverse_data <- data.frame(read_csv("../Data/Metaverse/220711_Metaverse.csv"))
 
 #Utility
-Utility_data <- data.frame(read_csv("..Data/Utility/220711_utility.csv"))
+Utility_data <- data.frame(read_csv("../Data/Utility/220711_utility.csv"))
 ```
 
 ```{r}
