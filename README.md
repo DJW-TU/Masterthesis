@@ -5,7 +5,7 @@ Creation Date: 06. September 2022
 
 # Intro
 
-The data is structured as follows. The folders are separated into three different sections: Scraper, LDA, Bubble Tests, Latex, Screenshots Websites. In order to review the code and use the right dataset, this file explains the usage of the different scripts. The numbers before the datasets or the filenames describe the dates the scrape or the data was collected as YYYYMMDD. For readability reasons it is advised to use the jupyter notebooks to review the code.
+The data is structured as follows. The folders are separated into five different sections: Scraper, LDA, Bubble Tests, Latex, Screenshots Websites. In order to review the code and use the right dataset, this file explains the usage of the different scripts. The numbers before the datasets or the filenames describe the dates the scrape or the data was collected as YYYYMMDD. For readability reasons it is advised to use the jupyter notebooks to review the code.
 
 ## Scraper
 
