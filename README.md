@@ -52,7 +52,7 @@ The Data folder contains all the time series for the NFT projects and their aggr
 
 ## Latex
 
-The Latex folder contains the raw form of the Latex file, the bibliography in .bibtex format and a completed PDF version of the thesis
+The Latex folder contains the raw form of the Latex file, which also contains the bibliography in bibtex format.
 
 ## Screenshots Websites
 
