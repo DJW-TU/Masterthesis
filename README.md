@@ -25,6 +25,7 @@ The Data contains the input data for the scraper. The file is named **'220704_pr
 * **'220705_html_content.csv'**
 * **'220705_html_content_normalized.csv'**
 
+<br> In the displayed scriped the results represent a trial with 15 links from the link list. A reinitilization of the script will result in a full run of the script. This was done as the script takes a longer time to run and it was reviewed with a shorter link list before.
 
 ## LDA
 
