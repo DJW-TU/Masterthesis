@@ -59,12 +59,6 @@ names <- list("Art","Collectible","Game","Metaverse","Utility")
 data <- list(Art_data,Collectibles_data,Gaming_data,Metaverse_data,Utility_data)
 ```
 
-```{r}
-for (x in 1:length(data)) {
-print(paste(names[x],sum(data[[x]]$Number.of.sales)))
-}
-```
-
 
 ```{r}
 data <- lapply(data,get_avg_usd)
